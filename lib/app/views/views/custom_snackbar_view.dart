@@ -11,22 +11,21 @@ class CustomSnackbar {
     Get.snackbar('', '',
         isDismissible: true,
         backgroundColor: Colors.grey.withOpacity(0.5),
-        icon: const CircleAvatar(
-          backgroundColor: Colors.amber,
-          child: Icon(
-            Icons.warning_sharp,
-            color: Colors.amber,
-            size: 25,
-          ),
+        icon: const Icon(
+          Icons.warning_sharp,
+          color: Colors.red,
+          size: 25,
         ),
         messageText: Text(message,
             style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20)),
         shouldIconPulse: true,
-        colorText: Colors.green,
+        colorText: Colors.white,
         titleText: Text(title,
             style: const TextStyle(
-                color: Colors.green,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 17)));
   }
@@ -36,22 +35,21 @@ class CustomSnackbar {
         snackPosition: SnackPosition.BOTTOM,
         isDismissible: true,
         backgroundColor: Colors.grey.withOpacity(0.5),
-        icon: const CircleAvatar(
-          backgroundColor: Colors.green,
-          child: Icon(
-            Icons.done,
-            color: Colors.amber,
-            size: 35,
-          ),
+        icon: const Icon(
+          Icons.done,
+          color: Colors.green,
+          size: 35,
         ),
         messageText: Text(message,
             style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20)),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20)),
         shouldIconPulse: true,
-        colorText: Colors.grey,
+        colorText: Colors.white,
         titleText: Text(title,
             style: const TextStyle(
-                color: Colors.grey,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 17)));
   }

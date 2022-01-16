@@ -1,11 +1,9 @@
-import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 import 'package:w2s/app/data/user/user_data.dart';
+import 'package:w2s/app/views/views/custom_image_viewer.dart';
 import 'package:w2s/app/views/views/custom_profile_image_view.dart';
-
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -38,12 +36,18 @@ class ProfileView extends GetView<ProfileController> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            const Spacer(),
-            ProfileImage(
-              outerRadius: 55,
-              innerRadius: 52,
-              onTap: () {},
+            const Spacer(
+              flex: 3,
             ),
+            ProfileImage(
+                outerRadius: 65,
+                innerRadius: 62,
+                onTap: () => ImageView(
+                        imagePath: UserDetails().readUserProfilePicfromBox(),
+                        imageTitle: '',
+                        isImageFromPath: true)
+                    .showImage(context),
+                strokeColor: Colors.blue),
             const SizedBox(height: 50),
             ..._userDetails,
             const Spacer(
@@ -59,6 +63,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
             ),
+           
             const Spacer(
               flex: 1,
             ),
@@ -111,7 +116,7 @@ final _userDetails = [
   const SizedBox(height: 10),
   ProfileUserDetails(
     title: UserDetails().readUserPhonefromBox(),
-    icon: FontAwesomeIcons.phone,
+    icon: FontAwesomeIcons.phoneAlt,
   ),
   const SizedBox(height: 10),
   ProfileUserDetails(

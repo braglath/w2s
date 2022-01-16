@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:w2s/app/data/assets/image_assets.dart';
 import 'package:w2s/app/modules/signup/controllers/signup_controller.dart';
-import 'package:w2s/app/routes/app_pages.dart';
 import 'package:w2s/app/views/views/custom_email_field_view.dart';
 import 'package:w2s/app/views/views/custom_password_field_view.dart';
-
 import '../controllers/forgot_password_controller.dart';
 
 class ForgotPasswordView extends GetView<ForgotPasswordController> {
@@ -115,8 +113,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                                   height: 25,
                                   width: 25,
                                   child: CircularProgressIndicator(
-                                    backgroundColor: Colors.amber,
-                                    color: Colors.green,
+                                    backgroundColor: Colors.grey,
+                                    color: Colors.blue,
                                   ),
                                 ),
                         ),

@@ -33,10 +33,6 @@ class SignupController extends GetxController {
 
   final textFieldFocusNode = FocusNode();
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void checkPasswordStrength(String value) {
     password.value = value.trim();
@@ -123,6 +119,7 @@ class SignupController extends GetxController {
                 isDismissible: true,
                 onpressedCancel: () {
                   Get.back();
+                  UserLoggedIn().userLoggedIn(true);
                   CustomBottomSheet(
                     icon1: FontAwesomeIcons.cameraRetro,
                     icon2: FontAwesomeIcons.image,
@@ -140,21 +137,21 @@ class SignupController extends GetxController {
                 title: 'Attention')
             .showDialogue();
         isLoading.value = false;
-        UserLoggedIn().userLoggedIn(true);
       } else {
+        UserLoggedIn().userLoggedIn(true);
         UserDetails().saveUserDetailstoBox(
             name: name,
             phone: phone,
             email: email,
             password: password,
             profilepic: profilePicture.value);
-        UserLoggedIn().userLoggedIn(true);
+
         isLoading.value = false;
         Get.offAllNamed(Routes.HOME);
       }
       isLoading.value = false;
-      print(
-          'name - $name\nemail - $email\nphone - $phone\npassword - $password');
+      // print(
+      //     'name - $name\nemail - $email\nphone - $phone\npassword - $password');
     }
   }
 

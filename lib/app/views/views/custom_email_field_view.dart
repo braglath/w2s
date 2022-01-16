@@ -15,12 +15,13 @@ class CustomEmailField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        onEditingComplete: () => FocusScope.of(context).nextFocus(),
         style: const TextStyle(color: Colors.grey),
         cursorColor: Colors.grey,
         keyboardType: TextInputType.emailAddress,
         controller: emailController,
         validator: validator,
-        decoration:  InputDecoration(
+        decoration: InputDecoration(
           prefixIcon: const Icon(
             Icons.email,
             color: Colors.blue,

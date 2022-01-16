@@ -61,7 +61,7 @@ class SignupView extends GetView<SignupController> {
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 12.0),
-                            child: _name(),
+                            child: _name(context),
                           ),
                           const SizedBox(
                             height: 15,
@@ -69,7 +69,7 @@ class SignupView extends GetView<SignupController> {
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 12.0),
-                            child: _phoneNumber(),
+                            child: _phoneNumber(context),
                           ),
                           const SizedBox(
                             height: 15,
@@ -197,8 +197,9 @@ class SignupView extends GetView<SignupController> {
     return ProfileImage(controller: controller);
   }
 
-  Widget _name() {
+  Widget _name(BuildContext context) {
     return TextFormField(
+        onEditingComplete: () => FocusScope.of(context).nextFocus(),
         style: const TextStyle(color: Colors.grey),
         cursorColor: Colors.grey,
         keyboardType: TextInputType.name,
@@ -213,11 +214,12 @@ class SignupView extends GetView<SignupController> {
         ));
   }
 
-  Widget _phoneNumber() {
+  Widget _phoneNumber(BuildContext context) {
     return TextFormField(
+        onEditingComplete: () => FocusScope.of(context).nextFocus(),
         style: const TextStyle(color: Colors.grey),
         cursorColor: Colors.grey,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
         controller: controller.phoneController,
         validator: (val) => controller.phoneValidator(val),
         decoration: const InputDecoration(

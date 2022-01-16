@@ -8,7 +8,7 @@ class SplashScreenController extends GetxController {
   void onInit() {
     super.onInit();
     Future.delayed(const Duration(seconds: 3), () {
-      print(UserLoggedIn().checkisUserLoggedIn());
+      // print(' is user logged in - ${UserLoggedIn().checkisUserLoggedIn()}');
       UserLoggedIn().checkisUserLoggedIn() == false
           ? Get.offNamed(Routes.LOGIN)
           : Get.offNamed(Routes.HOME);

@@ -5,10 +5,6 @@ import 'package:w2s/app/routes/app_pages.dart';
 class ProfileController extends GetxController {
   final isLoading = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void logoutUser() {
     isLoading.value = true;

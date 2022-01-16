@@ -9,10 +9,6 @@ class ForgotPasswordController extends GetxController {
   final TextEditingController passwordTwoController = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey<FormState>();
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   String? emailValidator(String? value) {
     if (value!.isEmpty) {

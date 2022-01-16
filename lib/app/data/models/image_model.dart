@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:meta/meta.dart';
-
 // To parse this JSON data, do
 //
 //     final model = modelFromJson(jsonString);
@@ -509,7 +507,7 @@ class EnumValues<T> {
 
   Map<T, String> get reverse {
     if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
+      reverseMap = map.map((k, v) =>  MapEntry(v, k));
     }
     return reverseMap!;
   }

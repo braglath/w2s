@@ -1,14 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:w2s/app/data/assets/image_assets.dart';
 import 'package:w2s/app/modules/signup/controllers/signup_controller.dart';
-import 'package:w2s/app/modules/signup/views/signup_view.dart';
 import 'package:w2s/app/routes/app_pages.dart';
-import 'package:w2s/app/views/views/custom_bottomsheet.dart';
 import 'package:w2s/app/views/views/custom_email_field_view.dart';
 import 'package:w2s/app/views/views/custom_password_field_view.dart';
 import '../controllers/login_controller.dart';
@@ -107,8 +101,8 @@ class LoginView extends GetView<LoginController> {
                                   height: 25,
                                   width: 25,
                                   child: CircularProgressIndicator(
-                                    backgroundColor: Colors.amber,
-                                    color: Colors.green,
+                                   backgroundColor: Colors.grey,
+                                    color: Colors.blue,
                                   ),
                                 ),
                         ),

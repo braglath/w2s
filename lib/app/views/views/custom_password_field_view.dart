@@ -21,6 +21,7 @@ class CustompasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        onEditingComplete: () => FocusScope.of(context).unfocus(),
         onChanged: onChanged,
         style: const TextStyle(color: Colors.grey),
         cursorColor: Colors.grey,

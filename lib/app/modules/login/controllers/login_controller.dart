@@ -42,8 +42,8 @@ class LoginController extends GetxController {
   }
 
   void loginUser(context, String email, String password) async {
-    print(
-        '${UserDetails().readUserEmailfromBox()}\n${UserDetails().readUserPasswordfromBox()}');
+    // print(
+    //     '${UserDetails().readUserEmailfromBox()}\n${UserDetails().readUserPasswordfromBox()}');
     isLoading.value = true;
     if (formState.currentState!.validate()) {
       UserLoggedIn().userLoggedIn(true);
