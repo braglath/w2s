@@ -120,16 +120,37 @@ class SignupController extends GetxController {
                 isDismissible: true,
                 onpressedCancel: () {
                   Get.back();
-                  UserLoggedIn().userLoggedIn(true);
                   CustomBottomSheet(
                     icon1: FontAwesomeIcons.cameraRetro,
                     icon2: FontAwesomeIcons.image,
                     title1: SignUpPageStrings.camera,
                     titile2: SignUpPageStrings.gallery,
-                    onTap1: () => pickImage(ImageSource.camera)
-                        .whenComplete(() => Get.offAllNamed(Routes.HOME)),
-                    onTap2: () => pickImage(ImageSource.gallery)
-                        .whenComplete(() => Get.offAllNamed(Routes.HOME)),
+                    onTap1: () =>
+                        pickImage(ImageSource.camera).whenComplete(() {
+                      UserLoggedIn().userLoggedIn(true);
+                      UserDetails().saveUserDetailstoBox(
+                          name: name,
+                          phone: phone,
+                          email: email,
+                          password: password,
+                          profilepic: profilePicture.value);
+
+                      isLoading.value = false;
+                      Get.offAllNamed(Routes.HOME);
+                    }),
+                    onTap2: () =>
+                        pickImage(ImageSource.gallery).whenComplete(() {
+                      UserLoggedIn().userLoggedIn(true);
+                      UserDetails().saveUserDetailstoBox(
+                          name: name,
+                          phone: phone,
+                          email: email,
+                          password: password,
+                          profilepic: profilePicture.value);
+
+                      isLoading.value = false;
+                      Get.offAllNamed(Routes.HOME);
+                    }),
                   ).show();
                 },
                 onpressedConfirm: () => Get.back(),
@@ -137,7 +158,6 @@ class SignupController extends GetxController {
                 textConfirm: SignUpPageStrings.cancel,
                 title: SignUpPageStrings.attention)
             .showDialogue();
-        isLoading.value = false;
       } else {
         UserLoggedIn().userLoggedIn(true);
         UserDetails().saveUserDetailstoBox(

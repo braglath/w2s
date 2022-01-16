@@ -65,7 +65,6 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
             ),
-           
             const Spacer(
               flex: 1,
             ),
@@ -96,8 +95,8 @@ class ProfileUserDetails extends StatelessWidget {
           ),
           Text(
             title,
-            style:
-                context.theme.textTheme.headline6?.copyWith(color: ColourResources.grey),
+            style: context.theme.textTheme.headline6
+                ?.copyWith(color: ColourResources.grey),
           ),
         ],
       ),
