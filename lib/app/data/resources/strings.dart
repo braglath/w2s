@@ -45,6 +45,7 @@ class SignUpPageStrings {
   static const profPicEmpty = 'Profile picture empty';
   static const picknow = 'Pick Now';
   static const continuE = 'Continue';
+  static const cancel = 'Cancel';
   static const attention = 'Attention';
   static const imagePickFailed = 'Faild to pick image';
 }

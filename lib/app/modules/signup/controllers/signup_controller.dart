@@ -132,10 +132,10 @@ class SignupController extends GetxController {
                         .whenComplete(() => Get.offAllNamed(Routes.HOME)),
                   ).show();
                 },
-                onpressedConfirm: () => Get.offAllNamed(Routes.HOME),
+                onpressedConfirm: () => Get.back(),
                 textCancel: SignUpPageStrings.picknow,
-                textConfirm: SignUpPageStrings.continuE,
-                title:SignUpPageStrings.attention)
+                textConfirm: SignUpPageStrings.cancel,
+                title: SignUpPageStrings.attention)
             .showDialogue();
         isLoading.value = false;
       } else {
@@ -174,7 +174,9 @@ class SignupController extends GetxController {
           isLoading.value = false;
           Get.back();
         } else {
-          CustomSnackbar(title: Strings.error, message: SignUpPageStrings.imagePickFailed)
+          CustomSnackbar(
+                  title: Strings.error,
+                  message: SignUpPageStrings.imagePickFailed)
               .showWarning();
           isLoading.value = false;
           Get.back();
