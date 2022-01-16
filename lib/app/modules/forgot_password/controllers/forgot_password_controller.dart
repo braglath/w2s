@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/data/user/user_data.dart';
 
 class ForgotPasswordController extends GetxController {
@@ -12,39 +13,39 @@ class ForgotPasswordController extends GetxController {
 
   String? emailValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Email cannot be empty';
+      return Validator.emailEmpty;
     }
     if (value.isEmail == false) {
-      return 'Email field error';
+      return Validator.emailNotValid;
     }
     if (value != UserDetails().readUserEmailfromBox()) {
-      return 'Email is incorrect';
+      return Validator.emailIncorrect;
     }
     return null;
   }
 
   String? passwordOneValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Password cannot be empty';
+      return Validator.passwordEmpty;
     }
     if (value.length > 16) {
-      return 'Password cannot be more than 16 character';
+      return Validator.passwordMore16Chars;
     }
     if (value != passwordTwoController.text) {
-      return 'Password does not match';
+      return Validator.passwordNotMatched;
     }
     return null;
   }
 
   String? passwordTwoValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Password cannot be empty';
+      return Validator.passwordEmpty;
     }
     if (value.length > 16) {
-      return 'Password cannot be more than 16 character';
+      return Validator.passwordMore16Chars;
     }
     if (value != passwordOneController.text) {
-      return 'Password does not match';
+      return Validator.passwordNotMatched;
     }
     return null;
   }

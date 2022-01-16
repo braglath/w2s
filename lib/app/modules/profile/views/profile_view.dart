@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:w2s/app/data/resources/colour_resources.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/data/user/user_data.dart';
 import 'package:w2s/app/views/views/custom_image_viewer.dart';
 import 'package:w2s/app/views/views/custom_profile_image_view.dart';
@@ -24,8 +26,8 @@ class ProfileView extends GetView<ProfileController> {
             ? const Positioned.fill(
                 child: Center(
                     child: CircularProgressIndicator(
-                backgroundColor: Colors.grey,
-                color: Colors.blue,
+                backgroundColor: ColourResources.grey,
+                color: ColourResources.blue,
               )))
             : const SizedBox.shrink()
       ],
@@ -47,7 +49,7 @@ class ProfileView extends GetView<ProfileController> {
                         imageTitle: '',
                         isImageFromPath: true)
                     .showImage(context),
-                strokeColor: Colors.blue),
+                strokeColor: ColourResources.blue),
             const SizedBox(height: 50),
             ..._userDetails,
             const Spacer(
@@ -57,9 +59,9 @@ class ProfileView extends GetView<ProfileController> {
               child: ElevatedButton(
                 onPressed: () => controller.logoutUser(),
                 child: Text(
-                  'Logout',
+                  Strings.logout,
                   style: context.theme.textTheme.headline6
-                      ?.copyWith(color: Colors.white),
+                      ?.copyWith(color: ColourResources.white),
                 ),
               ),
             ),
@@ -87,7 +89,7 @@ class ProfileUserDetails extends StatelessWidget {
         children: [
           FaIcon(
             icon,
-            color: Colors.blue,
+            color: ColourResources.blue,
           ),
           const SizedBox(
             width: 10,
@@ -95,7 +97,7 @@ class ProfileUserDetails extends StatelessWidget {
           Text(
             title,
             style:
-                context.theme.textTheme.headline6?.copyWith(color: Colors.grey),
+                context.theme.textTheme.headline6?.copyWith(color: ColourResources.grey),
           ),
         ],
       ),

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:w2s/app/data/assets/image_assets.dart';
+import 'package:w2s/app/data/resources/colour_resources.dart';
+import 'package:w2s/app/data/resources/image_assets.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/views/views/custom_bottomsheet.dart';
 import 'package:w2s/app/views/views/custom_email_field_view.dart';
 import 'package:w2s/app/views/views/custom_password_field_view.dart';
@@ -35,13 +37,13 @@ class SignupView extends GetView<SignupController> {
                         Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Text(
-                            'Sign up',
+                            Strings.signup,
                             style: context.theme.textTheme.headline2,
                           ),
                         ),
                         const Spacer(),
                         Hero(
-                          tag: 'logo',
+                          tag: Strings.heroTagLogo,
                           child: SizedBox(
                               height: 50,
                               width: 50,
@@ -95,7 +97,7 @@ class SignupView extends GetView<SignupController> {
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
-                                'Password strength - Always pick a stronger password',
+                                SignUpPageStrings.pickStrongerPass,
                                 style: context.theme.textTheme.caption,
                               ),
                             ),
@@ -106,14 +108,15 @@ class SignupView extends GetView<SignupController> {
                                   const EdgeInsets.symmetric(horizontal: 12),
                               child: LinearProgressIndicator(
                                 minHeight: 3,
-                                semanticsLabel: 'password strength',
+                                semanticsLabel: SignUpPageStrings.passStrength,
                                 value: controller.passwordStrength.value,
-                                backgroundColor: Colors.white,
+                                backgroundColor: ColourResources.white,
                                 color: controller.passwordStrength.value <=
                                         1 / 4
-                                    ? Colors.red.withOpacity(0.8)
+                                    ? ColourResources.red?.withOpacity(0.8)
                                     : controller.passwordStrength.value == 2 / 4
-                                        ? Colors.amber.withOpacity(0.8)
+                                        ? ColourResources.amber
+                                            ?.withOpacity(0.8)
                                         : controller.passwordStrength.value ==
                                                 3 / 4
                                             ? Colors.deepPurpleAccent
@@ -126,7 +129,7 @@ class SignupView extends GetView<SignupController> {
                             height: 20,
                           ),
                           Hero(
-                            tag: 'loginbutton',
+                            tag: Strings.loginBtnHeroTag,
                             child: Center(
                               child: ElevatedButton(
                                 onPressed: () => controller.signupUser(
@@ -135,15 +138,10 @@ class SignupView extends GetView<SignupController> {
                                     controller.phoneController.text,
                                     controller.emailController.text,
                                     controller.passwordController.text),
-                                // controller.profilePictureDialogue(
-                                //     controller.nameController.text,
-                                //     controller.phoneController.text,
-                                //     controller.emailController.text,
-                                //     controller.passwordController.text),
                                 child: Text(
-                                  'Sign up',
+                                  Strings.signup,
                                   style: context.theme.textTheme.headline6
-                                      ?.copyWith(color: Colors.white),
+                                      ?.copyWith(color: ColourResources.white),
                                 ),
                               ),
                             ),
@@ -166,10 +164,10 @@ class SignupView extends GetView<SignupController> {
                               style: context.theme.textTheme.headline4,
                               children: <TextSpan>[
                                 TextSpan(
-                                    text: 'Login',
+                                    text: Strings.login,
                                     style: context.theme.textTheme.headline4
                                         ?.copyWith(
-                                      color: Colors.blue,
+                                      color: ColourResources.blue,
                                     )),
                               ],
                             ),
@@ -183,8 +181,8 @@ class SignupView extends GetView<SignupController> {
                     ? const Positioned.fill(
                         child: Center(
                             child: CircularProgressIndicator(
-                        backgroundColor: Colors.grey,
-                        color: Colors.blue,
+                        backgroundColor: ColourResources.grey,
+                        color: ColourResources.blue,
                       )))
                     : const SizedBox.shrink()
               ],
@@ -200,7 +198,7 @@ class SignupView extends GetView<SignupController> {
   Widget _name(BuildContext context) {
     return TextFormField(
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
-        style: const TextStyle(color: Colors.grey),
+        style: const TextStyle(color: ColourResources.grey),
         cursorColor: Colors.grey,
         keyboardType: TextInputType.name,
         controller: controller.nameController,
@@ -210,7 +208,7 @@ class SignupView extends GetView<SignupController> {
             Icons.person,
             color: Colors.blue,
           ),
-          labelText: 'Name',
+          labelText: Strings.name,
         ));
   }
 
@@ -227,14 +225,14 @@ class SignupView extends GetView<SignupController> {
             Icons.phone,
             color: Colors.blue,
           ),
-          labelText: 'Phone number',
+          labelText: Strings.phone,
         ));
   }
 
   Widget _email() => CustomEmailField(
         emailController: controller.emailController,
         validator: (val) => controller.emailValidator(val),
-        label: 'Email',
+        label: Strings.email,
       );
   Widget _password() => Obx(() {
         return CustompasswordField(
@@ -243,7 +241,7 @@ class SignupView extends GetView<SignupController> {
           obscureText: controller.obscured.value,
           validator: (val) => controller.passwordValidator(val),
           obsOnTap: () => controller.passwordObs(),
-          label: 'Password',
+          label: Strings.password,
         );
       });
 }
@@ -289,8 +287,8 @@ class ProfileImage extends StatelessWidget {
             onPressed: () => CustomBottomSheet(
                   icon1: FontAwesomeIcons.cameraRetro,
                   icon2: FontAwesomeIcons.image,
-                  title1: 'Camera',
-                  titile2: 'Gallery',
+                  title1: SignUpPageStrings.camera,
+                  titile2: SignUpPageStrings.gallery,
                   onTap1: () => controller.pickImage(ImageSource.camera),
                   onTap2: () => controller.pickImage(ImageSource.gallery),
                 ).show(),

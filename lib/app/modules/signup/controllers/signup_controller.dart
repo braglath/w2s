@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:w2s/app/data/resources/colour_resources.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/data/user/user_data.dart';
 import 'package:w2s/app/routes/app_pages.dart';
 import 'package:w2s/app/views/views/custom_bottomsheet.dart';
@@ -33,7 +35,6 @@ class SignupController extends GetxController {
 
   final textFieldFocusNode = FocusNode();
 
-
   void checkPasswordStrength(String value) {
     password.value = value.trim();
     if (password.value.isEmpty) {
@@ -58,41 +59,41 @@ class SignupController extends GetxController {
 
   String? nameValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Name cannot be empty';
+      return Validator.nameEmpty;
     }
     return null;
   }
 
   String? phoneValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Phone number cannot be empty';
+      return Validator.phoneEmpty;
     }
 
     if (value.contains(letterRegExpress)) {
-      return 'Phone number cannot contain alphabets';
+      return Validator.phoneContainsAlpha;
     }
     if (value.length > 10) {
-      return 'Phone number cannot be more than 10 characters';
+      return Validator.phoneMore10Chars;
     }
     return null;
   }
 
   String? emailValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Email cannot be empty';
+      return Validator.emailEmpty;
     }
     if (value.isEmail == false) {
-      return 'Enter valid email';
+      return Validator.emailNotValid;
     }
     return null;
   }
 
   String? passwordValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Password cannot be empty';
+      return Validator.passwordEmpty;
     }
     if (value.length > 16) {
-      return 'Password cannot be more than 16 character';
+      return Validator.passwordMore16Chars;
     }
     return null;
   }
@@ -110,11 +111,11 @@ class SignupController extends GetxController {
       if (profilePicture.isEmpty) {
         CustomDialogue(
                 contentWidget: Text(
-                  'Profile picture empty',
+                  SignUpPageStrings.profPicEmpty,
                   style: Theme.of(context)
                       .textTheme
                       .subtitle2
-                      ?.copyWith(fontSize: 17, color: Colors.grey),
+                      ?.copyWith(fontSize: 17, color: ColourResources.grey),
                 ),
                 isDismissible: true,
                 onpressedCancel: () {
@@ -123,8 +124,8 @@ class SignupController extends GetxController {
                   CustomBottomSheet(
                     icon1: FontAwesomeIcons.cameraRetro,
                     icon2: FontAwesomeIcons.image,
-                    title1: 'Camera',
-                    titile2: 'Gallery',
+                    title1: SignUpPageStrings.camera,
+                    titile2: SignUpPageStrings.gallery,
                     onTap1: () => pickImage(ImageSource.camera)
                         .whenComplete(() => Get.offAllNamed(Routes.HOME)),
                     onTap2: () => pickImage(ImageSource.gallery)
@@ -132,9 +133,9 @@ class SignupController extends GetxController {
                   ).show();
                 },
                 onpressedConfirm: () => Get.offAllNamed(Routes.HOME),
-                textCancel: 'Pick Now',
-                textConfirm: 'Continue',
-                title: 'Attention')
+                textCancel: SignUpPageStrings.picknow,
+                textConfirm: SignUpPageStrings.continuE,
+                title:SignUpPageStrings.attention)
             .showDialogue();
         isLoading.value = false;
       } else {
@@ -173,7 +174,7 @@ class SignupController extends GetxController {
           isLoading.value = false;
           Get.back();
         } else {
-          CustomSnackbar(title: 'Error', message: 'Faild to pick image')
+          CustomSnackbar(title: Strings.error, message: SignUpPageStrings.imagePickFailed)
               .showWarning();
           isLoading.value = false;
           Get.back();
@@ -184,7 +185,7 @@ class SignupController extends GetxController {
       Get.back();
       isLoading.value = false;
 
-      CustomSnackbar(title: 'Error', message: 'Error picking image, $e')
+      CustomSnackbar(title: Strings.error, message: 'Error picking image, $e')
           .showWarning();
     }
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:w2s/app/data/assets/image_assets.dart';
+import 'package:w2s/app/data/resources/colour_resources.dart';
+import 'package:w2s/app/data/resources/image_assets.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/modules/signup/controllers/signup_controller.dart';
 import 'package:w2s/app/views/views/custom_email_field_view.dart';
 import 'package:w2s/app/views/views/custom_password_field_view.dart';
@@ -31,14 +32,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      'Password',
+                      Strings.password,
                       style: context.theme.textTheme.headline2,
                     ),
                   ),
                 ],
               ),
               Hero(
-                tag: 'logo',
+                tag: Strings.heroTagLogo,
                 child: SizedBox(
                     height: 100,
                     width: 100,
@@ -57,7 +58,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       child: CustomEmailField(
                         emailController: controller.emailController,
                         validator: (val) => controller.emailValidator(val),
-                        label: 'Email',
+                        label: Strings.email,
                       ),
                     ),
                     const SizedBox(
@@ -73,7 +74,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           validator: (val) =>
                               controller.passwordOneValidator(val),
                           obsOnTap: () => signupController.passwordObs(),
-                          label: 'New password',
+                          label: ForgotPasswordPageStrings.newPassword,
                         );
                       }),
                     ),
@@ -90,7 +91,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           validator: (val) =>
                               controller.passwordTwoValidator(val),
                           obsOnTap: () => signupController.passwordObs(),
-                          label: 'Retype password',
+                          label: ForgotPasswordPageStrings.retypePassword,
                         );
                       }),
                     ),
@@ -98,23 +99,23 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       height: 30,
                     ),
                     Hero(
-                      tag: 'loginbutton',
+                      tag: Strings.loginBtnHeroTag,
                       child: Center(
                         child: ElevatedButton(
                           onPressed: () => controller.confirmPassword(
                               controller.passwordTwoController.text),
                           child: controller.isLoading.isFalse
                               ? Text(
-                                  'Confirm',
+                                  ForgotPasswordPageStrings.confirm,
                                   style: context.theme.textTheme.headline6
-                                      ?.copyWith(color: Colors.white),
+                                      ?.copyWith(color: ColourResources.white),
                                 )
                               : const SizedBox(
                                   height: 25,
                                   width: 25,
                                   child: CircularProgressIndicator(
-                                    backgroundColor: Colors.grey,
-                                    color: Colors.blue,
+                                    backgroundColor: ColourResources.grey,
+                                    color: ColourResources.blue,
                                   ),
                                 ),
                         ),
@@ -139,10 +140,10 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                         style: context.theme.textTheme.headline4,
                         children: <TextSpan>[
                           TextSpan(
-                              text: 'Login',
+                              text: Strings.login,
                               style:
                                   context.theme.textTheme.headline4?.copyWith(
-                                color: Colors.blue,
+                                color: ColourResources.blue,
                               )),
                         ],
                       ),

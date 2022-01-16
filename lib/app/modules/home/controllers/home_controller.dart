@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-
 import 'package:w2s/app/data/models/image_model.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/data/services/api_services.dart';
 
 class HomeController extends GetxController with SingleGetTickerProviderMixin {
@@ -14,11 +13,11 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   final List<Tab> myTabs = <Tab>[
     const Tab(
-      text: 'Collections',
+      text: HomePageSrings.tab1,
       icon: FaIcon(FontAwesomeIcons.music),
     ),
     const Tab(
-      text: 'Profile',
+      text: HomePageSrings.tab2,
       icon: FaIcon(FontAwesomeIcons.user),
     ),
   ];

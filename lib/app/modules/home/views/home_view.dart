@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:w2s/app/data/assets/image_assets.dart';
 import 'package:w2s/app/data/models/image_model.dart';
+import 'package:w2s/app/data/resources/colour_resources.dart';
+import 'package:w2s/app/data/resources/image_assets.dart';
+import 'package:w2s/app/data/resources/strings.dart';
 import 'package:w2s/app/modules/profile/controllers/profile_controller.dart';
 import 'package:w2s/app/modules/profile/views/profile_view.dart';
 import 'package:w2s/app/views/animation/shimmer_animation.dart';
@@ -53,7 +55,7 @@ class HomeView extends GetView<HomeController> {
                     onTap: () => controller.tabController.animateTo(1,
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.fastOutSlowIn),
-                    strokeColor: Colors.white,
+                    strokeColor: ColourResources.white,
                   ),
                 )
               ],
@@ -84,10 +86,10 @@ class Fab extends StatelessWidget {
                   ? FloatingActionButton(
                       heroTag: null,
                       mini: true,
-                      tooltip: 'scroll to top',
+                      tooltip: HomePageSrings.scrollToTopToolTip,
                       child: const FaIcon(
                         FontAwesomeIcons.chevronUp,
-                        color: Colors.white,
+                        color: ColourResources.white,
                       ),
                       onPressed: () => controller.scrollToTop())
                   : Container(
@@ -114,7 +116,7 @@ class AppBarTitle extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        const Text('W2S '),
+        const Text(HomePageSrings.appBarTitle1),
         TopToBottomAnimationView(
           duration: const Duration(milliseconds: 1000),
           child: SizedBox(
@@ -123,10 +125,10 @@ class AppBarTitle extends StatelessWidget {
               child: Image.asset(
                 ImageAssets.logo,
                 fit: BoxFit.contain,
-                color: Colors.white,
+                color: ColourResources.white,
               )),
         ),
-        const Text(' Store'),
+        const Text(HomePageSrings.appBarTitle2),
       ],
     );
   }
