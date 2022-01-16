@@ -19,7 +19,8 @@ class SplashScreenView extends GetView<SplashScreenController> {
     return AnimatedSplashScreen(
       backgroundColor: Colors.white,
       duration: 500,
-      splash: Hero(tag: Strings.heroTagLogo, child: Lottie.asset(ImageAssets.splash)),
+      splash: Hero(
+          tag: Strings.heroTagLogo, child: Lottie.asset(ImageAssets.splash)),
       splashIconSize: 200,
       nextScreen: HomeView(),
       disableNavigation: true,

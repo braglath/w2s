@@ -199,14 +199,14 @@ class SignupView extends GetView<SignupController> {
     return TextFormField(
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
         style: const TextStyle(color: ColourResources.grey),
-        cursorColor: Colors.grey,
+        cursorColor: ColourResources.grey,
         keyboardType: TextInputType.name,
         controller: controller.nameController,
         validator: (val) => controller.nameValidator(val),
         decoration: const InputDecoration(
           prefixIcon: Icon(
             Icons.person,
-            color: Colors.blue,
+            color: ColourResources.blue,
           ),
           labelText: Strings.name,
         ));
@@ -215,15 +215,15 @@ class SignupView extends GetView<SignupController> {
   Widget _phoneNumber(BuildContext context) {
     return TextFormField(
         onEditingComplete: () => FocusScope.of(context).nextFocus(),
-        style: const TextStyle(color: Colors.grey),
-        cursorColor: Colors.grey,
+        style: const TextStyle(color: ColourResources.grey),
+        cursorColor: ColourResources.grey,
         keyboardType: TextInputType.number,
         controller: controller.phoneController,
         validator: (val) => controller.phoneValidator(val),
         decoration: const InputDecoration(
           prefixIcon: Icon(
             Icons.phone,
-            color: Colors.blue,
+            color: ColourResources.blue,
           ),
           labelText: Strings.phone,
         ));
@@ -262,18 +262,18 @@ class ProfileImage extends StatelessWidget {
         Obx(() {
           return Center(
               child: CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: ColourResources.white,
             radius: 55,
             child: CircleAvatar(
               radius: 52,
               child: controller.profilePicture.value.isEmpty
                   ? const Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: ColourResources.white,
                       size: 50,
                     )
                   : const SizedBox.shrink(),
-              backgroundColor: Colors.blue,
+              backgroundColor: ColourResources.blue,
               foregroundImage: controller.profilePicture.value.isEmpty
                   ? null
                   : FileImage(
@@ -294,7 +294,7 @@ class ProfileImage extends StatelessWidget {
                 ).show(),
             icon: const FaIcon(
               FontAwesomeIcons.cameraRetro,
-              color: Colors.white,
+              color: ColourResources.white,
             ))
       ],
     );
